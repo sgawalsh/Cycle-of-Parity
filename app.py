@@ -109,8 +109,8 @@ def printTable(teamList):
 def intro():
 
     while True:
-        userChoice = raw_input("""Welcome to Stephen's 'Cycle of Parity Generator Program!
-Press 'm' to make your own league, or 'p' to use the Premiership at week 13 of 2015. and also 'l' to load stuff
+        userChoice = raw_input("""Welcome to Stephen's 'Cycle of Parity' Generator Program!
+Press 'm' to make your own league, 'l' to load a saved league, or 'p' to use the Premiership at week 13 of 2015.
 > """)
 
         if userChoice == 'm':
