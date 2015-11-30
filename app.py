@@ -4,7 +4,7 @@ from parityClasses import team
 from os import listdir
 
 
-def findCycleOfParity(team, teamsRemaining, cycleList, endTarget, teamList):
+def findCycleOfParity(team, teamsRemaining, cycleList, endTarget, teamList): #Algorithm that searches for cycle of parity and returns it, or finishes without returning if the cycle doesn't exist.
     del teamsRemaining[team]
     if len(teamsRemaining) == 0:
         if endTarget in teamList[team].conquests:
@@ -21,7 +21,7 @@ def findCycleOfParity(team, teamsRemaining, cycleList, endTarget, teamList):
                 cycleList.pop()
 
 
-def makeLeague():
+def makeLeague(): #Manually create league
     while True:
         teamNum = raw_input("How many teams are in the league?\n> ")
         try:
@@ -57,7 +57,7 @@ def makeLeague():
     return teamList
 
 
-def loadLeague():
+def loadLeague(): #Loads a league from save folder
     loadList = listdir('saves')
     print "The saves available are:"
     for el in xrange(len(loadList)):
@@ -74,7 +74,7 @@ def loadLeague():
     return teamList
 
 
-def saveLeague(teamList):
+def saveLeague(teamList): #Exports newly created league to a save folder
     while True:
         saveChoice = raw_input("Save this league? y/n\n> ")
         if saveChoice == 'y':
@@ -86,7 +86,7 @@ def saveLeague(teamList):
             print 'exsqueeze me?!?'
 
 
-def printCycleOfParity(cycleList):
+def printCycleOfParity(cycleList): #Prints cycle of parity, or informs user cycle was not found
     try:
         for el in xrange(len(cycleList)-1):
             print "%s beat %s" %(cycleList[el], cycleList[el + 1])
@@ -94,7 +94,7 @@ def printCycleOfParity(cycleList):
         print 'no cycle found'
 
 
-def printTable(teamList):
+def printTable(teamList): #prints a league table ordered by points assigned to the teams when the league was generated
     print "Here's the league table!"
     table = []
     for name, stats in teamList.iteritems():
@@ -106,7 +106,7 @@ def printTable(teamList):
         print '%d. %s - %d'%(el+1, table[el][0], table[el][1].points)
 
 
-def intro():
+def intro(): #Presents menu to user and generates league
 
     while True:
         userChoice = raw_input("""Welcome to Stephen's 'Cycle of Parity' Generator Program!
@@ -124,7 +124,7 @@ Press 'm' to make your own league, 'l' to load a saved league, or 'p' to use the
             teamList = loadLeague()
             break
         else:
-            print"Let's try that again!"
+            print "Let's try that again!"
     return teamList
 
 
